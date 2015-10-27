@@ -8,3 +8,9 @@
 
 + updates were made on the Desktop
 ++ this is a comment on the readme to reflect that
+
+------------------
+
++ Old a3 code was copied in to the source file
+++ manip controller and camera controller from the CMS solution
+++ render camera and render tree builder from our implementation
