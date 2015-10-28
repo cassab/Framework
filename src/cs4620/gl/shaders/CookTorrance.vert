@@ -24,11 +24,11 @@ attribute vec4 vPosition; // Sem (POSITION 0)
 void main() {
 // TODO A4
 	//Calculate Point in World Space
-	vec4 worldPos = mWorld * vPosition;
+	worldPos = mWorld * vPosition;
 	// Calculate Projected Point
 	gl_Position = mViewProjection * worldPos;
 
-	// WWe have to use the inverse transpose of the world transformation matrix for the normal
+	// We have to use the inverse transpose of the world transformation matrix for the normal
 	fN = normalize((mWorldIT * vNormal).xyz);
 	fUV = vUV;
 }
