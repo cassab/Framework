@@ -63,7 +63,7 @@ public class RenderCamera extends RenderObject {
 		// for this camera....
 		SceneCamera camera = this.sceneCamera;
 		// This is the view transformation from world space to camera space 
-		Matrix4 camXForm = this.mWorldTransform.invert();
+		Matrix4 camXForm = this.mWorldTransform.clone().invert();
 		// Set the view transformation martix
 		mView.set(camXForm);
 
