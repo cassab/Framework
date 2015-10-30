@@ -35,8 +35,12 @@ public class TexGenSphereNormalMap extends ACTextureGenerator {
 		// this is the first todo comment that was found when 
 		// 	performing the file search
 		
-		Colord color = new Colord(0.5,0.7,0.0);
-		System.out.println(color);
+		
+		float r = (float) (Math.sin(v)*Math.cos(u));
+		float g = (float) (Math.sin(v)*Math.sin(u));
+		float b = (float) (Math.cos(v));
+		
+		Colord color = new Colord(r,g,b);
 		outColor.set(color);
 	}
 }

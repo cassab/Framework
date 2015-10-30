@@ -34,11 +34,15 @@ void main() {
     float radius= bumpRadius;
 
     vec4 ncolor = getNormalColor(fUV);
+	vec3 ncolor3 = ncolor.xyz;
 
+	float OldRange = (1);  
+	float NewRange = (2);  
+	vec3 NewValue = (((ncolor3) * 2) / 1) - 1;
 	
 
 	// interpolating normals will change the length of the normal, so renormalize the normal.
-	vec3 N = normalize(fN);
+	vec3 N = normalize(NewValue);
 	vec3 V = normalize(worldCam - worldPos.xyz);
 	
 	vec4 finalColor = vec4(0.0, 0.0, 0.0, 0.0);
