@@ -3,6 +3,7 @@ package cs4620.common.texture;
 import egl.math.Color;
 import egl.math.Colord;
 import egl.math.Vector2i;
+import egl.math.Vector3;
 import egl.math.Vector3d;
 
 public class TexGenSphereNormalMap extends ACTextureGenerator {
@@ -35,12 +36,12 @@ public class TexGenSphereNormalMap extends ACTextureGenerator {
 		// this is the first todo comment that was found when 
 		// 	performing the file search
 		
-		
 		float r = (float) (Math.sin(v)*Math.cos(u));
 		float g = (float) (Math.sin(v)*Math.sin(u));
 		float b = (float) (Math.cos(v));
-		
-		Colord color = new Colord(r,g,b);
-		outColor.set(color);
+		Colord rgb = new Colord(r,g,b);
+		rgb.add(1);
+		rgb.mul(.5f);
+		outColor.set(rgb);
 	}
 }

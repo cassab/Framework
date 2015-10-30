@@ -36,9 +36,8 @@ void main() {
     vec4 ncolor = getNormalColor(fUV);
 	vec3 ncolor3 = ncolor.xyz;
 
-	float OldRange = (1);  
-	float NewRange = (2);  
-	vec3 NewValue = (((ncolor3) * 2) / 1) - 1;
+	vec3 NewValue = (ncolor3 * 2) - 1;
+
 	
 
 	// interpolating normals will change the length of the normal, so renormalize the normal.
