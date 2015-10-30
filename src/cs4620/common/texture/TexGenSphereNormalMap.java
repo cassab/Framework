@@ -34,6 +34,9 @@ public class TexGenSphereNormalMap extends ACTextureGenerator {
 		// I'm assuming that this is where we begin
 		// this is the first todo comment that was found when 
 		// 	performing the file search
-		outColor.set(100, 100, 100);
+		
+		Colord color = new Colord(0.5,0.7,0.0);
+		System.out.println(color);
+		outColor.set(color);
 	}
 }
