@@ -25,13 +25,7 @@ varying vec2 fUV;
 varying vec3 fN; // normal at the vertex
 varying vec4 worldPos; // vertex position in world coordinates
 
-uniform float resolution;
-uniform float bumpRadius; 
-
 void main() {
-
-	float numcircles= resolution*resolution;
-    float radius= bumpRadius;
 
     vec4 ncolor = getNormalColor(fUV);
 	vec3 ncolor3 = ncolor.xyz;
