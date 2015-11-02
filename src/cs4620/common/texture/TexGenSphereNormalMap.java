@@ -38,7 +38,7 @@ public class TexGenSphereNormalMap extends ACTextureGenerator {
 		// 	performing the file search
 
 		float uRES = u*resolution;
-		float vRES = u*resolution;
+		float vRES = v*resolution;
 
 		int uRound = Math.round(uRES);
 		int vRound = Math.round(vRES);

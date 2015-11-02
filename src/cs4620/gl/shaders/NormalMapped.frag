@@ -6,6 +6,8 @@
 // vec4 getSpecularColor(vec2 uv)
 
 // RenderObject Input
+uniform mat3 mWorldIT;
+uniform mat3 mWorld;
 
 // Lighting Information
 const int MAX_LIGHTS = 16;
@@ -25,6 +27,12 @@ varying vec2 fUV;
 varying vec3 fN; // normal at the vertex
 varying vec4 worldPos; // vertex position in world coordinates
 
+uniform vec3 vBitangent; 
+uniform vec3 vTangent; 
+uniform vec3 vNormal;
+
+
+
 void main() {
 
     vec4 ncolor = getNormalColor(fUV);
@@ -32,10 +40,14 @@ void main() {
 
 	vec3 NewValue = (ncolor3 * 2) - 1;
 
-	
+	//convert normal from tangent space to world space
+	mat3 BTN = mat3(vTangent, vBitangent, vNormal);
+	mat3 BTNin = mWorldIT*BTN;
+
+	vec3 normalW = NewValue*BTNin;
 
 	// interpolating normals will change the length of the normal, so renormalize the normal.
-	vec3 N = normalize(NewValue);
+	vec3 N = normalize(normalW);
 	vec3 V = normalize(worldCam - worldPos.xyz);
 	
 	vec4 finalColor = vec4(0.0, 0.0, 0.0, 0.0);
