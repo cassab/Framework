@@ -23,16 +23,17 @@ attribute vec4 vPosition; // Sem (POSITION 0)
 	varying vec4 worldPos; // vertex position in world-space coordinates
 
 // Shading Information
-	vec4 ncolor = getNormalColor(fUV);
-	//vec3 ncolor3 = ncolor.xyz;
+	vec4 ncolor = getNormalColor(vUV);
 	float disp = (ncolor.x + ncolor.y + ncolor.z) / 3;
-	vec4 newVpos = vPosition * disp * dispMagnitude;
+	vec3 eatMe = vNormal * disp * dispMagnitude;
+	vec4 four = new vec4(eatMe, 0.0f);
+	vec4 newVpos = vPosition + four;
 
 void main() {
   // TODO A4
-  worldPos = mWorld * vPosition;
+  worldPos = mWorld * newVpos;
   gl_Position = mViewProjection * worldPos;
 
 	fN = normalize((mWorldIT * vNormal).xyz);
-	//fUV = vUV;
+	fUV = vUV;
 }

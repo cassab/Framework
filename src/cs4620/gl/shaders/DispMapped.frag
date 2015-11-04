@@ -25,7 +25,6 @@ varying vec4 worldPos; // vertex position in world coordinates
 
 void main() {
   // TODO A4
-//	gl_FragColor = vec4(1,1,1,1);
 
 	// interpolating normals will change the length of the normal, so renormalize the normal.
 	vec3 N = normalize(fN);
