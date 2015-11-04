@@ -27,9 +27,9 @@ varying vec2 fUV;
 varying vec3 fN; // normal at the vertex
 varying vec4 worldPos; // vertex position in world coordinates
 
-uniform vec3 vBitangent; 
-uniform vec3 vTangent; 
-uniform vec3 vNormal;
+varying vec3 bitangent; 
+varying vec3 tangent; 
+varying vec3 normal;
 
 
 
@@ -39,12 +39,18 @@ void main() {
 	vec3 ncolor3 = ncolor.xyz;
 
 	vec3 NewValue = (ncolor3 * 2) - 1;
+	
+	float nx = NewValue.x;
+	float ny = NewValue.y;
+	float nz = NewValue.z;
 
 	//convert normal from tangent space to world space
-	mat3 BTN = mat3(vTangent, vBitangent, vNormal);
-	mat3 BTNin = mWorldIT*BTN;
+//	mat3 BTN = mat3(vTangent, vBitangent, vNormal);
+//	mat3 BTN = mat3(vBitangent, vNormal, vTangent);
+//	mat3 BTN = mat3(vTangent, vNormal, vBitangent);
+//	mat3 BTNin = mWorldIT*BTN;
 
-	vec3 normalW = NewValue*BTNin;
+	vec3 normalW = tangent * nx + bitangent * ny + normal * nz;
 
 	// interpolating normals will change the length of the normal, so renormalize the normal.
 	vec3 N = normalize(normalW);

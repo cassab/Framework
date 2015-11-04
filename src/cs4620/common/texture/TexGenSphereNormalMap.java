@@ -40,21 +40,24 @@ public class TexGenSphereNormalMap extends ACTextureGenerator {
 		float uRES = u*resolution;
 		float vRES = v*resolution;
 
-		int uRound = Math.round(uRES);
-		int vRound = Math.round(vRES);
+		float uRound = (float)Math.round(uRES);
+		float vRound = (float)Math.round(vRES);
 
 		float uDiv = uRound/resolution;
 		float vDiv = vRound/resolution;
 
-		float r = (float) (Math.sin(v)*Math.cos(u));
-		float g = (float) (Math.sin(v)*Math.sin(u));
-		float b = (float) (Math.cos(v));
+		float r = (float) (Math.sin(vDiv)*Math.cos(uDiv));
+		float g = (float) (Math.sin(vDiv)*Math.sin(uDiv));
+		float b = (float) (Math.cos(vDiv));
 		Colord rgb = new Colord(r,g,b);
 
 		counter = counter + 1f;
 		if(counter%100 == 0){
 			System.out.println("u : " + u + " , v : " + v);
-			System.out.println("vector : " + (counter/100) + " = " + rgb);
+//			System.out.println("vector : " + (counter/100) + " = " + rgb);
+			System.out.println("uRound : " + uRound + " , vRound : " + vRound);
+			System.out.println("uDiv : " + uDiv + " , vDiv : " + vDiv);
+			System.out.println(resolution);
 		}
 
 		//remap colors
