@@ -33,9 +33,6 @@ public class TexGenSphereNormalMap extends ACTextureGenerator {
 	@Override
 	public void getColor(float u, float v, Color outColor) {
 		// TODO A4 
-		// I'm assuming that this is where we begin
-		// this is the first todo comment that was found when 
-		// 	performing the file search
 
 		float uRES = u*resolution;
 		float vRES = v*resolution;
